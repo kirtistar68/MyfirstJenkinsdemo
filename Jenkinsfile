@@ -9,13 +9,13 @@ pipeline {
 			   }
 			   stage('Build Image') {
 			   steps {
-			   sh 'docker build -t myhouseimage -p 5000:4000 -f Dockerfile .'
+			   sh 'docker build -t myhouseimage -f Dockerfile .'
 			   
 			   }
 			   }
 			   stage('Run Image'){
 			   steps {
-			   sh 'docker run -d --name mycont myhouseimage'
+			   sh 'docker run -d -p 5000:4000 --name mycont myhouseimage'
 			   }
 			   }
 			   stage('Testing') {
